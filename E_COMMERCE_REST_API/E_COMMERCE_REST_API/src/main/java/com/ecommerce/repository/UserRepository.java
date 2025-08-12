@@ -1,0 +1,22 @@
+// koristi JPA repository za upite nad bazom podataka korisnika
+// koristi spring data jpa
+
+package com.ecommerce.repository;
+
+import com.ecommerce.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    
+    Optional<User> findByUsername(String username);
+    
+    Optional<User> findByEmail(String email);
+    
+    boolean existsByUsername(String username);
+    
+    boolean existsByEmail(String email);
+} 
